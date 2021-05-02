@@ -23,6 +23,6 @@ public class EllipseFactory {
         Point secondPoint = new Point(coordinates.get(2), coordinates.get(3));
         var ellipse = new Ellipse(firstPoint, secondPoint);
         logger.log(Level.INFO, "Ellipse created successfully");
-        return new Ellipse();
+        return ellipse;
     }
 }

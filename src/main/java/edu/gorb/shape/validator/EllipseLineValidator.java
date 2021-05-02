@@ -1,7 +1,7 @@
 package edu.gorb.shape.validator;
 
 public class EllipseLineValidator {
-    private static final String VALID_ELLIPSE_LINE_REGEXP = "^([-]?\\d\\.\\d ){3}([-]?\\d\\.\\d)$";
+    private static final String VALID_ELLIPSE_LINE_REGEXP = "([-]?\\d+\\.\\d+\\s+){3}([-]?\\d+\\.\\d+)";
 
     private EllipseLineValidator() {
     }
