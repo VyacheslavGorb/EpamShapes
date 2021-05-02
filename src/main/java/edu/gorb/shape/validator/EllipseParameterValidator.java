@@ -3,7 +3,10 @@ package edu.gorb.shape.validator;
 import edu.gorb.shape.entity.Point;
 
 public class EllipseParameterValidator {
-    public boolean areValidParameters(Point firstPoint, Point secondPoint){
+    private EllipseParameterValidator(){
+    }
+
+    public static boolean areValidParameters(Point firstPoint, Point secondPoint){
         if (firstPoint == null || secondPoint == null){
             return false;
         }

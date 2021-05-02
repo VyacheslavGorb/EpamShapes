@@ -44,16 +44,17 @@ public class EllipseParameter {
     @Override
     public int hashCode() {
         int result = 1;
-        result += 31*result + (int)perimeter;
-        result += 31*result + (int)area;
+        result += 31*result + Double.hashCode(perimeter);
+        result += 31*result + Double.hashCode(area);
         return result;
     }
 
     @Override
     public String toString() {
-        return "EllipseData{" +
-                "perimeter=" + perimeter +
-                ", area=" + area +
-                '}';
+        final StringBuilder sb = new StringBuilder("EllipseParameter{");
+        sb.append("perimeter=").append(perimeter);
+        sb.append(", area=").append(area);
+        sb.append('}');
+        return sb.toString();
     }
 }

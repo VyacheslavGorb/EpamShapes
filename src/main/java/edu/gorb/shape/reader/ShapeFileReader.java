@@ -16,11 +16,9 @@ import java.util.stream.Collectors;
 
 public class ShapeFileReader {
     private static final Logger logger = LogManager.getLogger();
-    private static final EllipseLineValidator ELLIPSE_LINE_VALIDATOR = new EllipseLineValidator();
-    private static final EllipseFileValidator fileValidator = new EllipseFileValidator();
 
     public List<String> readFile(String filePathString) throws EllipseException {
-        if (!fileValidator.isValidFile(filePathString)) {
+        if (!EllipseFileValidator.isValidFile(filePathString)) {
             logger.log(Level.ERROR, "File path represents invalid file");
             throw new EllipseException("File path represents invalid file");
         }
@@ -28,7 +26,7 @@ public class ShapeFileReader {
         List<String> correctLines = null;
         try (var fileLines = Files.lines(path)) {
             correctLines = fileLines
-                    .filter(ELLIPSE_LINE_VALIDATOR::isValidLine)
+                    .filter(EllipseLineValidator::isValidLine)
                     .collect(Collectors.toList());
         } catch (IOException e) {
             logger.log(Level.ERROR, "Error while reading file {}", filePathString);

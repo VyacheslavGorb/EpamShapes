@@ -49,7 +49,7 @@ public class EllipseServiceEllipseImplTest {
 
 
     @DataProvider(name = "valid_oval_data")
-    public Object[][] createOvals() {
+    public Object[][] createOvals() throws EllipseException {
         return new Object[][]{
                 {new Ellipse(new Point(10,0), new Point(20,20))},
                 {new Ellipse(new Point(30,0), new Point(40,40))}
@@ -57,7 +57,7 @@ public class EllipseServiceEllipseImplTest {
     }
 
     @DataProvider(name = "invalid_oval_data")
-    public Object[][] createInvalidOvals() {
+    public Object[][] createInvalidOvals() throws EllipseException {
         return new Object[][]{
                 {new Ellipse(new Point(10,10), new Point(10,20))},
                 {new Ellipse(new Point(30,40), new Point(40,40))}
@@ -65,7 +65,7 @@ public class EllipseServiceEllipseImplTest {
     }
 
     @DataProvider(name = "valid_circle_data")
-    public Object[][] createCircles() {
+    public Object[][] createCircles() throws EllipseException {
         return new Object[][]{
                 {new Ellipse(new Point(10,10), new Point(20,20))},
                 {new Ellipse(new Point(30,30), new Point(40,40))}
@@ -73,7 +73,7 @@ public class EllipseServiceEllipseImplTest {
     }
 
     @DataProvider(name = "valid_perimeter_data")
-    public Object[][] createPerimeterData(){
+    public Object[][] createPerimeterData() throws EllipseException {
         return new Object[][]{
                 {new Ellipse(new Point(10,10), new Point(20,20)), 31.41592653589793},
                 {new Ellipse(new Point(30,30), new Point(40,40)), 31.41592653589793}
@@ -81,7 +81,7 @@ public class EllipseServiceEllipseImplTest {
     }
 
     @DataProvider(name = "valid_area_data")
-    public Object[][] createAreaData(){
+    public Object[][] createAreaData() throws EllipseException {
         return new Object[][]{
                 {new Ellipse(new Point(10,10), new Point(20,20)), 78.53981633974483},
                 {new Ellipse(new Point(30,30), new Point(40,40)), 78.53981633974483}

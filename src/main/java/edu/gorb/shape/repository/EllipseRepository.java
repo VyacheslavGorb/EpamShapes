@@ -2,7 +2,9 @@ package edu.gorb.shape.repository;
 
 import edu.gorb.shape.entity.Ellipse;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class EllipseRepository {
@@ -24,7 +26,7 @@ public class EllipseRepository {
         return storage.isEmpty();
     }
 
-    public boolean contains(Object o) {
+    public boolean contains(Ellipse o) {
         return storage.contains(o);
     }
 
@@ -32,7 +34,7 @@ public class EllipseRepository {
         return storage.add(ellipse);
     }
 
-    public boolean remove(Object o) {
+    public boolean remove(Ellipse o) {
         return storage.remove(o);
     }
 
@@ -48,11 +50,19 @@ public class EllipseRepository {
         return storage.set(index, element);
     }
 
-    public void sort(Comparator<? super Ellipse> c) {
-        storage.sort(c);
+    public List<Ellipse> sortStream(Comparator<? super Ellipse> comparator) {
+        return storage.stream()
+                .sorted(comparator)
+                .collect(Collectors.toList());
     }
 
-    public List<Ellipse> query(Specification specification) {
+    public List<Ellipse> sort(Comparator<? super Ellipse> comparator) {
+        List<Ellipse> storageCopy = new ArrayList<Ellipse>(storage);
+        storageCopy.sort(comparator);
+        return storageCopy;
+    }
+
+    public List<Ellipse> query(EllipseSpecification specification) {
         return storage.stream()
                 .filter((specification::specify))
                 .collect(Collectors.toList());

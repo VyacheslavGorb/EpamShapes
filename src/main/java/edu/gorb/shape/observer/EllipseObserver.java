@@ -1,5 +1,5 @@
 package edu.gorb.shape.observer;
 
-public interface Observer {
+public interface EllipseObserver {
     void parameterChanged(EllipseEvent event);
 }

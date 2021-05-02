@@ -3,7 +3,11 @@ package edu.gorb.shape.validator;
 import java.io.File;
 
 public class EllipseFileValidator {
-    public boolean isValidFile(String filePathString) {
+
+    private EllipseFileValidator() {
+    }
+
+    public static boolean isValidFile(String filePathString) {
         if (filePathString == null) {
             return false;
         }

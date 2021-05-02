@@ -32,7 +32,7 @@ public class ShapeParserTest {
     }
 
     @DataProvider(name = "valid_data")
-    public Object[][] createShapeList() {
+    public Object[][] createShapeList() throws EllipseException {
         return new Object[][]{
                 {Arrays.asList("10.0 10.0 20.0 20.0", "40.0 50.0 43.0 23.0"),
                         Arrays.asList(new Ellipse(new Point(10, 10), new Point(20, 20)),

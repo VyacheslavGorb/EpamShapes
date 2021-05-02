@@ -4,7 +4,7 @@ import edu.gorb.shape.entity.Ellipse;
 
 import java.util.Comparator;
 
-public class IdComparator implements Comparator<Ellipse> {
+public class EllipseIdComparator implements Comparator<Ellipse> {
     @Override
     public int compare(Ellipse o1, Ellipse o2) {
         int result = 0;

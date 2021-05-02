@@ -2,32 +2,32 @@ package edu.gorb.shape.entity;
 
 import edu.gorb.shape.exception.EllipseException;
 import edu.gorb.shape.observer.EllipseEvent;
-import edu.gorb.shape.observer.Observable;
-import edu.gorb.shape.observer.Observer;
-import edu.gorb.shape.observer.impl.EllipseObserver;
+import edu.gorb.shape.observer.EllipseObservable;
+import edu.gorb.shape.observer.EllipseObserver;
+import edu.gorb.shape.util.ShapeIdGenerator;
 import edu.gorb.shape.validator.EllipseParameterValidator;
 
-public class Ellipse implements Observable {
-    private static final EllipseParameterValidator validator = new EllipseParameterValidator();
-    private static long counter = 0;
+import java.util.ArrayList;
+
+public class Ellipse implements EllipseObservable {
     private final long ellipseId;
     private Point firstPoint;
     private Point secondPoint;
-    private Observer observer = new EllipseObserver();
+    private final ArrayList<EllipseObserver> observers = new ArrayList<>();
 
     public Ellipse() {
         this.firstPoint = new Point();
         this.secondPoint = new Point();
-        ellipseId = counter++;
+        ellipseId = ShapeIdGenerator.generateId();
     }
 
     public Ellipse(Point firstPoint, Point secondPoint) throws EllipseException {
-        if (!validator.areValidParameters(firstPoint,secondPoint)){
+        if (!EllipseParameterValidator.areValidParameters(firstPoint, secondPoint)) {
             throw new EllipseException("Illegal arguments");
         }
         this.firstPoint = new Point(firstPoint);
         this.secondPoint = new Point(secondPoint);
-        ellipseId = counter++;
+        ellipseId = ShapeIdGenerator.generateId();
     }
 
     public Point getFirstPoint() {
@@ -71,27 +71,32 @@ public class Ellipse implements Observable {
 
     @Override
     public String toString() {
-        return "Ellipse{" +
-                "ellipseId=" + ellipseId +
-                ", firstPoint=" + firstPoint +
-                ", secondPoint=" + secondPoint +
-                '}';
+        final StringBuilder sb = new StringBuilder("Ellipse{");
+        sb.append("ellipseId=").append(ellipseId);
+        sb.append(", firstPoint=").append(firstPoint);
+        sb.append(", secondPoint=").append(secondPoint);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
     public void notifyObservers() {
-        if (observer == null){
-            return;
+        for (EllipseObserver observer : observers){
+            if (observer == null) {
+                return;
+            }
+            EllipseEvent event = new EllipseEvent(this);
+            observer.parameterChanged(event);
         }
-        EllipseEvent event = new EllipseEvent(this);
-        observer.parameterChanged(event);
     }
 
     @Override
-    public void attach(Observer observer) {
+    public void attach(EllipseObserver observer) {
+        observers.add(observer);
     }
 
     @Override
-    public void detach(Observer observer) {
+    public void detach(EllipseObserver observer) {
+        observers.remove(observer);
     }
 }

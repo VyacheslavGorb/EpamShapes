@@ -1,12 +1,12 @@
 package edu.gorb.shape.repository.impl;
 
 import edu.gorb.shape.entity.Ellipse;
-import edu.gorb.shape.repository.Specification;
+import edu.gorb.shape.repository.EllipseSpecification;
 
-public class MinWidthSpecification implements Specification {
+public class EllipseMinWidthSpecification implements EllipseSpecification {
     private final double minWidth;
 
-    public MinWidthSpecification(double minWidth) {
+    public EllipseMinWidthSpecification(double minWidth) {
         this.minWidth = minWidth;
     }
 

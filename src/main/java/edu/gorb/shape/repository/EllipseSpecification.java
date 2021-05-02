@@ -2,6 +2,7 @@ package edu.gorb.shape.repository;
 
 import edu.gorb.shape.entity.Ellipse;
 
-public interface Specification {
+@FunctionalInterface
+public interface EllipseSpecification {
     public boolean specify(Ellipse ellipse);
 }

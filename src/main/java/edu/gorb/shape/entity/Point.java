@@ -5,8 +5,6 @@ public class Point {
     private double y;
 
     public Point() {
-        x = 0;
-        y = 0;
     }
 
     public Point(double x, double y) {
@@ -53,9 +51,10 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        final StringBuilder sb = new StringBuilder("Point{");
+        sb.append("x=").append(x);
+        sb.append(", y=").append(y);
+        sb.append('}');
+        return sb.toString();
     }
 }
