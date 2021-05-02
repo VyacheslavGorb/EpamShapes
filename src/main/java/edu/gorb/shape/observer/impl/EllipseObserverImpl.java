@@ -13,22 +13,22 @@ import org.apache.logging.log4j.Logger;
 
 public class EllipseObserverImpl implements EllipseObserver {
     private static final Logger logger = LogManager.getLogger();
-    private static final EllipseService service = new EllipseServiceImpl();
 
     @Override
     public void parameterChanged(EllipseEvent event) {
         double area = 0;
         double perimeter = 0;
-        Ellipse source = event.getSource();
+        EllipseService service = new EllipseServiceImpl();
+        Ellipse ellipse = event.getSource();
 
         try {
-            perimeter = service.calcPerimeter(source);
-            area = service.calcArea(source);
+            perimeter = service.calcPerimeter(ellipse);
+            area = service.calcArea(ellipse);
         } catch (EllipseException ignored) {
             logger.log(Level.WARN, "Arguments are always valid");
         }
 
-        long id = source.getEllipseId();
+        long id = ellipse.getEllipseId();
         Warehouse warehouse = Warehouse.getInstance();
         try {
             warehouse.updateParameters(id, area, perimeter);

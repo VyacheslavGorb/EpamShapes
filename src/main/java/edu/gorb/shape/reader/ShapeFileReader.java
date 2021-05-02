@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ShapeFileReader {
     private static final Logger logger = LogManager.getLogger();
@@ -23,8 +24,8 @@ public class ShapeFileReader {
             throw new EllipseException("File path represents invalid file");
         }
         Path path = Paths.get(filePathString);
-        List<String> correctLines = null;
-        try (var fileLines = Files.lines(path)) {
+        List<String> correctLines;
+        try (Stream<String> fileLines = Files.lines(path)) {
             correctLines = fileLines
                     .filter(EllipseLineValidator::isValidLine)
                     .collect(Collectors.toList());

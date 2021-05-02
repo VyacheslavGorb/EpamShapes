@@ -17,7 +17,7 @@ public class Warehouse {
     }
 
     public void putParameters(long id, double area, double perimeter) {
-        var data = new EllipseParameter();
+        EllipseParameter data = new EllipseParameter();
         data.setArea(area);
         data.setPerimeter(perimeter);
         instance.ellipseMap.put(id, data);
@@ -32,7 +32,7 @@ public class Warehouse {
     }
 
     public void updateParameters(long id, double area, double perimeter) throws EllipseException {
-        var data = ellipseMap.get(id);
+        EllipseParameter data = ellipseMap.get(id);
         if(data == null){
             throw new EllipseException("No such element in warehouse");
         }

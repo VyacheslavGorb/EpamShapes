@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EllipseRepository {
-    private static final EllipseRepository INSTANCE = new EllipseRepository();
+    private static final EllipseRepository instance = new EllipseRepository();
     private final List<Ellipse> storage = new ArrayList<>();
 
     private EllipseRepository() {
     }
 
     public static EllipseRepository getInstance() {
-        return INSTANCE;
+        return instance;
     }
 
     public int size() {
@@ -57,7 +57,7 @@ public class EllipseRepository {
     }
 
     public List<Ellipse> sort(Comparator<? super Ellipse> comparator) {
-        List<Ellipse> storageCopy = new ArrayList<Ellipse>(storage);
+        List<Ellipse> storageCopy = new ArrayList<>(storage);
         storageCopy.sort(comparator);
         return storageCopy;
     }
