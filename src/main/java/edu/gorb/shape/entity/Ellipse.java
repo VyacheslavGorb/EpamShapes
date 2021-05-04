@@ -81,9 +81,9 @@ public class Ellipse implements EllipseObservable {
 
     @Override
     public void notifyObservers() {
-        for (EllipseObserver observer : observers){
+        for (EllipseObserver observer : observers) {
             if (observer == null) {
-                return;
+                continue;
             }
             EllipseEvent event = new EllipseEvent(this);
             observer.parameterChanged(event);

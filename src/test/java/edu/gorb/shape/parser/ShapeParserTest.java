@@ -20,13 +20,13 @@ public class ShapeParserTest {
 
     @Test(dataProvider = "valid_data")
     public void parseShapesTest(String line, List<Double> expectedList) throws EllipseException {
-        List<Double> parsedList = parser.parseShapes(line);
+        List<Double> parsedList = parser.parseShape(line);
         assertEquals(parsedList, expectedList);
     }
 
     @Test(dataProvider = "invalid_data", expectedExceptions = EllipseException.class)
     public void parseShapesTest(String line) throws EllipseException {
-        parser.parseShapes(line);
+        parser.parseShape(line);
     }
 
     @DataProvider(name = "valid_data")

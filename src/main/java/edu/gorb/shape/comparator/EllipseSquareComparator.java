@@ -23,7 +23,7 @@ public class EllipseSquareComparator implements Comparator<Ellipse> {
             area1 = service.calcArea(o1);
             area2 = service.calcArea(o2);
         } catch (EllipseException e) {
-            logger.log(Level.WARN, "Parameters are valid");
+            logger.log(Level.ERROR, "Parameters are valid");
         }
         if (area1 - area2 < 0) {
             result = -1;

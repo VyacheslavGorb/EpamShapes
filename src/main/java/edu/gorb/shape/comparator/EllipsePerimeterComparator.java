@@ -23,7 +23,7 @@ public class EllipsePerimeterComparator implements Comparator<Ellipse> {
             perimeter1 = service.calcPerimeter(o1);
             perimeter2 = service.calcPerimeter(o2);
         } catch (EllipseException e) {
-            logger.log(Level.WARN, "Parameters are valid");
+            logger.log(Level.ERROR, "Parameters are valid");
         }
         if (perimeter1 - perimeter2 < 0) {
             result = -1;

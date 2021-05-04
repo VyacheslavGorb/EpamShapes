@@ -3,10 +3,10 @@ package edu.gorb.shape.util;
 public class ShapeIdGenerator {
     private static long counter;
 
-    private ShapeIdGenerator(){
+    private ShapeIdGenerator() {
     }
 
-    public static long generateId(){
+    public static long generateId() {
         return counter++;
     }
 }

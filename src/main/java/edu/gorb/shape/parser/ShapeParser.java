@@ -14,7 +14,7 @@ public class ShapeParser {
     private static final String SPACE_REGEXP = "\\s+";
     private static final int VALUE_COUNT = 4;
 
-    public List<Double> parseShapes(String shapeLine) throws EllipseException {
+    public List<Double> parseShape(String shapeLine) throws EllipseException {
         List<Double> valueList;
         try {
             valueList = Arrays.stream(shapeLine.split(SPACE_REGEXP))

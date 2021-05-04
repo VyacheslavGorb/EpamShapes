@@ -14,6 +14,9 @@ public class EllipseFactory {
     private static final Logger logger = LogManager.getLogger();
     private static final int VALUE_COUNT = 4;
 
+    private EllipseFactory() {
+    }
+
     public static Ellipse createEllipse(List<Double> coordinates) throws EllipseException {
         if (coordinates.size() != VALUE_COUNT) {
             logger.log(Level.ERROR, "Invalid argument count: {}", coordinates);

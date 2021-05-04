@@ -12,7 +12,7 @@ public class EllipseParameter {
         this.area = area;
     }
 
-    public EllipseParameter(EllipseParameter newData){
+    public EllipseParameter(EllipseParameter newData) {
         perimeter = newData.perimeter;
         area = newData.area;
     }
@@ -44,8 +44,8 @@ public class EllipseParameter {
     @Override
     public int hashCode() {
         int result = 1;
-        result += 31*result + Double.hashCode(perimeter);
-        result += 31*result + Double.hashCode(area);
+        result += 31 * result + Double.hashCode(perimeter);
+        result += 31 * result + Double.hashCode(area);
         return result;
     }
 

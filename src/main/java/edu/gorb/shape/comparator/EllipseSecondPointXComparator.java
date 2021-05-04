@@ -8,11 +8,11 @@ public class EllipseSecondPointXComparator implements Comparator<Ellipse> {
     @Override
     public int compare(Ellipse o1, Ellipse o2) {
         int result = 0;
-        double firstPointX1 = o1.getFirstPoint().getX();
-        double firstPointX2 = o2.getFirstPoint().getX();
-        if (firstPointX1 - firstPointX2 < 0) {
+        double secondPointX1 = o1.getSecondPoint().getX();
+        double secondPointX2 = o2.getSecondPoint().getX();
+        if (secondPointX1 - secondPointX2 < 0) {
             result = -1;
-        } else if (firstPointX1 - firstPointX2 > 0) {
+        } else if (secondPointX1 - secondPointX2 > 0) {
             result = 1;
         }
         return result;

@@ -1,6 +1,6 @@
 package edu.gorb.shape.exception;
 
-public class EllipseException extends Exception{
+public class EllipseException extends Exception {
     public EllipseException() {
     }
 

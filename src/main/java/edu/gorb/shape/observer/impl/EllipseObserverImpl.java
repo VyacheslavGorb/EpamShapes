@@ -25,7 +25,7 @@ public class EllipseObserverImpl implements EllipseObserver {
             perimeter = service.calcPerimeter(ellipse);
             area = service.calcArea(ellipse);
         } catch (EllipseException ignored) {
-            logger.log(Level.WARN, "Arguments are always valid");
+            logger.log(Level.ERROR, "Arguments are always valid");
         }
 
         long id = ellipse.getEllipseId();
@@ -33,7 +33,7 @@ public class EllipseObserverImpl implements EllipseObserver {
         try {
             warehouse.updateParameters(id, area, perimeter);
         } catch (EllipseException e) {
-            logger.log(Level.WARN, e.getMessage());
+            logger.log(Level.ERROR, e.getMessage());
         }
     }
 }

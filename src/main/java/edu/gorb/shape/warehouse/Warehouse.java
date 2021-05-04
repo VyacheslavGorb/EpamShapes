@@ -12,7 +12,7 @@ public class Warehouse {
     private Warehouse() {
     }
 
-    public static Warehouse getInstance(){
+    public static Warehouse getInstance() {
         return instance;
     }
 
@@ -25,7 +25,7 @@ public class Warehouse {
 
     public EllipseParameter getParameters(long id) throws EllipseException {
         EllipseParameter data = instance.ellipseMap.get(id);
-        if(data == null){
+        if (data == null) {
             throw new EllipseException("No such element in warehouse");
         }
         return new EllipseParameter(data);
@@ -33,7 +33,7 @@ public class Warehouse {
 
     public void updateParameters(long id, double area, double perimeter) throws EllipseException {
         EllipseParameter data = ellipseMap.get(id);
-        if(data == null){
+        if (data == null) {
             throw new EllipseException("No such element in warehouse");
         }
         data.setArea(area);
