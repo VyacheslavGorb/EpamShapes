@@ -6,6 +6,7 @@ import edu.gorb.shape.exception.EllipseException;
 import edu.gorb.shape.factory.EllipseFactory;
 import edu.gorb.shape.filler.RepositoryFiller;
 import edu.gorb.shape.filler.WarehouseFiller;
+import edu.gorb.shape.observer.EllipseObserver;
 import edu.gorb.shape.observer.impl.EllipseObserverImpl;
 import edu.gorb.shape.parser.ShapeParser;
 import edu.gorb.shape.reader.ShapeFileReader;
@@ -40,10 +41,11 @@ public class Main {
             Warehouse warehouse = Warehouse.getInstance();
             RepositoryFiller repositoryFiller = new RepositoryFiller();
             WarehouseFiller warehouseFiller = new WarehouseFiller();
+            EllipseObserver observer = new EllipseObserverImpl();
             for (String fileLine : validFileLines) {
                 List<Double> lineValues = parser.parseShape(fileLine);
                 Ellipse ellipse = EllipseFactory.createEllipse(lineValues);
-                ellipse.attach(new EllipseObserverImpl());
+                ellipse.attach(observer);
                 repositoryFiller.fillRepository(ellipse);
                 warehouseFiller.fillWarehouse(ellipse);
             }
