@@ -33,7 +33,7 @@ public class ShapeFileReader {
             logger.log(Level.ERROR, "Error while reading file {}", filePathString);
             throw new EllipseException("Error while reading file " + filePathString);
         }
-        logger.log(Level.INFO, "Correct lines were read in file: {}", filePathString);
+        logger.log(Level.INFO, "Lines were read in file: {}", filePathString);
         return correctLines;
     }
 }
